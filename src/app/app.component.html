@@ -1,0 +1,5 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<ul>
+  <li *ngFor="let item of list" draggable="true" (dragstart)="dragStart($event,item)"> {{item.title}}</li>
+</ul>
+<ng-drag-table [myTable]="table"></ng-drag-table>

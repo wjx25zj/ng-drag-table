@@ -1,0 +1,17 @@
+<div style="position:absolute;display:contents">
+  <ng-container *ngFor="let val of myTable.$selectBoxEntity.selectList; let key = index">
+    <div *ngIf="val.position.table === myTable.position.table && val.selectBoxType === positionType" [attr.key]="key"
+      [ngStyle]="{
+          position: 'absolute',
+          top:val.style.top+'px',
+          left:val.style.left+'px'
+          }">
+      <span>
+        <div [ngStyle]="val.topStyle"></div>
+        <div [ngStyle]="val.rightStyle"></div>
+        <div [ngStyle]="val.bottomStyle"></div>
+        <div [ngStyle]="val.leftStyle"></div>
+      </span>
+    </div>
+  </ng-container>
+</div>

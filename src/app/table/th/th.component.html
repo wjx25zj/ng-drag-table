@@ -1,0 +1,22 @@
+<div tabindex="1" [ngStyle]="th.style" (click)="th.onClick($event)" (blur)="th.onBlur($event)"
+    [attr.draggable]="th.draggable" (dragstart)="th.dragStart($event)" (dragover)="th.dragOver($event)"
+    (drop)="th.drop($event)" (dragleave)="th.dragLeave($event)" (dragenter)="th.dragEnter($event)"
+    (dragend)="th.dragEnd($event)" (mousedown)="th.onMouseDown($event)" (mousemove)="th.onMouseMove($event)"
+    (mouseout)="th.onMouseOut($event)">
+
+    <svg *ngIf="th.treeContainer && th.treeContainer.show" [ngStyle]="th.treeContainer.style" viewBox="0 0 1024 1024"
+        (click)="th.treeContainer.onClick($event)">
+        <path *ngFor="let d of th.treeContainer.svg[th.treeContainer.$openStatus].paths" [attr.d]="d"></path>
+    </svg>
+    <ng-container *ngFor="let sc of th.selfContainers">
+        <svg [ngStyle]="sc.style" viewBox="0 0 1024 1024" *ngIf="sc.show" (click)="sc.onClick($event)">
+            <path *ngFor="let d of sc.svg[sc.type].paths" [attr.d]="d"></path>
+        </svg>
+    </ng-container>
+
+    <div [ngStyle]="th.cell.style" (dblclick)="th.cell.onDbClick()" [attr.title]="th.cell.title"
+        *ngIf="th.cell.displayClass[th.cell.status].displayType == 'text'">
+        {{th.cell.content}}
+    </div>
+    <drag-dc [dc]="th.cell"></drag-dc>
+</div>

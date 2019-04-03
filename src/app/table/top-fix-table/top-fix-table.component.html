@@ -1,0 +1,53 @@
+<!-- 上测固定表头 -->
+<div class="fix-top-table" [scrollLeft]="myTable.scrollLeft" [ngStyle]="myTable.style.topTable"
+  (keydown)="myTable.onKeyDown($event)" (keyup)="myTable.onKeyUp($event)">
+  <table *ngIf="myTable && myTable.$rowNumber[0] && myTable.$colNumber[0]" class="my-table" cellspacing="0"
+    cellpadding="0" border="0">
+    <thead>
+      <!-- TopThead -->
+      <tr *ngIf="myTable.isShowColIndex">
+        <!-- TopIndexThead -->
+        <th class="rowNumber" tabindex="1" *ngIf="myTable.isShowRowIndex"
+          [ngStyle]="{padding:myTable.$rowNumber[0].style.padding,background:myTable.$rowNumber[0].style.background}">
+          <div
+            [ngStyle]="{width:myTable.$rowNumber[0].style.width,height:myTable.$colNumber[0].style.height,lineHeight:myTable.$colNumber[0].style.height}">
+            {{myTable.isTopLeftShow? myTable.topLeftValue:''}}
+          </div>
+        </th>
+
+        <th class="colNumber" tabindex="1" *ngFor="let th of myTable.$colNumber; let i = index" [ngStyle]="th.style"
+          (mousedown)="th.onMouseDown($event)" (mouseout)="th.onMouseOut($event)" (mousemove)="th.onMouseMove($event)"
+          (click)="th.onClick($event)" (dragover)="th.dragOver($event)" (drop)="th.drop($event)"
+          (dragenter)="th.dragEnter($event)" (dragleave)="th.dragLeave($event)">
+          <div [ngStyle]="th.cell.style">{{th.cell.content}}</div>
+        </th>
+      </tr>
+      <!-- TopThead -->
+      <tr *ngFor="let tr of myTable.$tableHeadTop; let i = index">
+        <!-- rowIndexTh -->
+        <th *ngIf="myTable.isShowRowIndex" tabindex="1" class="rowNumber" [ngStyle]="myTable.$rowNumber[i].style"
+          (mousedown)="myTable.$rowNumber[i].onMouseDown($event)"
+          (mousemove)="myTable.$rowNumber[i].onMouseMove($event)" (mouseout)="myTable.$rowNumber[i].onMouseOut($event)"
+          (drop)="myTable.$rowNumber[i].drop($event)" (dragenter)="myTable.$rowNumber[i].dragEnter($event)"
+          (dragleave)="myTable.$rowNumber[i].dragLeave($event)" (dragover)="myTable.$rowNumber[i].dragOver($event)">
+
+          <div [ngStyle]="myTable.$rowNumber[i].cell.style">{{myTable.$rowNumber[i].cell.content}}</div>
+        </th>
+        <th class="colNumber" tabindex="1" *ngIf="i===0 && myTable.$tableHeadLeft[0] && myTable.$tableHeadTop[0]"
+          [attr.colspan]="myTable.theadLeftEntity.side2" [attr.rowspan]="myTable.$tableHeadTop.length"
+          [ngStyle]="myTable.tableHeadTopLeft.style">
+          <div [ngStyle]="myTable.tableHeadTopLeft.cell.style">
+          </div>
+        </th>
+        <!-- 上测固定表头 -->
+        <th [attr.colspan]="th.span1" [attr.rowspan]="th.span2"
+          *ngFor="let th of myTable.$tableHeadTop[i]; let i = index" tabindex="1">
+          <drag-th [th]="th">
+          </drag-th>
+        </th>
+
+      </tr>
+    </thead>
+  </table>
+  <app-select-box [myTable]="myTable" positionType="top" *ngIf="myTable"></app-select-box>
+</div>

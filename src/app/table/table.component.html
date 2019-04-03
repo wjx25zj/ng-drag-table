@@ -1,0 +1,78 @@
+<div>
+  <app-left-fix-table *ngIf="myTable.hasLeftFixedTable" [myTable]="myTable"></app-left-fix-table>
+  <app-top-fix-table *ngIf="myTable.hasTopFixedTable" [myTable]="myTable"></app-top-fix-table>
+  <app-top-left-fix-table *ngIf="myTable.hasLeftFixedTable && myTable.hasTopFixedTable" [myTable]="myTable">
+  </app-top-left-fix-table>
+  <!-- 主表 -->
+  <div (keydown)="myTable.onKeyDown($event)" (keyup)="myTable.onKeyUp($event)" [ngStyle]="myTable.style.mainTable"
+    [scrollTop]="myTable.scrollTop" (scroll)="myTable.onScroll($event)" class="main-table">
+    <table *ngIf="myTable && myTable.$rowNumber[0] && myTable.$colNumber[0]" class="my-table" cellspacing="0"
+      cellpadding="0" border="0">
+
+
+      <!-- TopIndexThead -->
+      <tr *ngIf="myTable.isShowColIndex">
+        <th *ngIf="myTable.isShowRowIndex" class="rowNumber" tabindex="1"
+          [ngStyle]="{width:myTable.$rowNumber[0].style.width,height:myTable.$colNumber[0].style.height}">
+          <div
+            [ngStyle]="{width:myTable.$rowNumber[0].style.width,height:myTable.$colNumber[0].style.height,lineHeight:myTable.$colNumber[0].style.height}">
+            {{myTable.isTopLeftShow? myTable.topLeftValue:''}}
+          </div>
+        </th>
+        <th class="colNumber" *ngFor="let th of myTable.$colNumber; let i = index" (dragover)="th.dragOver($event)"
+          (drop)="th.drop($event)" (dragenter)="th.dragEnter($event)" (dragleave)="th.dragLeave($event)"
+          (mousedown)="th.onMouseDown($event)" (mousemove)="th.onMouseMove($event)" (mouseout)="th.onMouseOut($event)"
+          [ngStyle]="th.style">
+          <div [ngStyle]="th.cell.style">{{th.cell.content}}</div>
+        </th>
+      </tr>
+
+      <!-- 第二行开始 -->
+      <tr *ngFor="let th of myTable.$rowNumber; let i = index">
+        <ng-template [ngIf]="i < myTable.$tableHeadTop.length" [ngIfElse]="tbody">
+          <!-- rowIndexTh -->
+          <th *ngIf="myTable.isShowRowIndex" (dragover)="th.dragOver($event)" (drop)="th.drop($event)"
+            (dragenter)="th.dragEnter($event)" (dragleave)="th.dragLeave($event)" (mousedown)="th.onMouseDown($event)"
+            (mousemove)="th.onMouseMove($event)" (mouseout)="th.onMouseOut($event)" class="rowNumber">
+            <div [ngStyle]="th.cell.style">
+              {{ myTable.hasLeftFixedTable ?'':th.cell.content}}
+            </div>
+          </th>
+          <!-- TopLeft  -->
+          <th class="colNumber" tabindex="1" *ngIf="i===0 && myTable.$tableHeadLeft[0] && myTable.$tableHeadTop[0]"
+            [attr.colspan]="myTable.theadLeftEntity.side2" [attr.rowspan]="myTable.theadTopEntity.side2"
+            [ngStyle]="myTable.tableHeadTopLeft.style">
+            <div [ngStyle]="myTable.tableHeadTopLeft.cell.style">
+            </div>
+          </th>
+          <!-- topTh -->
+          <th [attr.colspan]="th.span1" [attr.rowspan]="th.span2"
+            *ngFor="let th of myTable.$tableHeadTop[i]; let i = index" tabindex="1">
+            <drag-th [th]="th">
+            </drag-th>
+          </th>
+        </ng-template>
+
+        <ng-template #tbody>
+          <th *ngIf="myTable.isShowRowIndex" [attr.colspan]="th.span2" [attr.rowspan]="th.span1">
+            <drag-th [th]="th">
+            </drag-th>
+          </th>
+          <!-- 主表里左侧表头 -->
+          <th [attr.colspan]="th.span2" [attr.rowspan]="th.span1"
+            *ngFor="let th of myTable.$tableHeadLeft[i - myTable.$tableHeadTop.length]; let j = index">
+            <drag-th [th]="th">
+            </drag-th>
+          </th>
+          <td *ngFor="let td of myTable.$tableBody[i - myTable.$tableHeadTop.length]; let j = index">
+            <drag-td [td]="td">
+            </drag-td>
+          </td>
+
+        </ng-template>
+
+      </tr>
+    </table>
+    <app-select-box [myTable]="myTable" positionType="main" *ngIf="myTable"></app-select-box>
+  </div>
+</div>

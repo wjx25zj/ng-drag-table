@@ -1,0 +1,15 @@
+<div [ngStyle]="dc.style" (dblclick)="dc.onDbClick($event)"
+    *ngIf="dc.displayClass[dc.status].displayType == 'text'">{{dc.content}}
+</div>
+
+<input type="text" (input)="dc.onInput($event)" (mouseup)="dc.onMouseUp($event)" [ngStyle]="dc.style"
+    *ngIf="dc.displayClass[dc.status].displayType == 'input'" (mouseover)="dc.onMouseOver($event)"
+    (focus)="dc.onFocus($event)" (blur)="dc.inputOnBlur($event,true)" (keydown)="dc.onKeyDown($event)"
+    [(ngModel)]="dc.value" />
+
+<select *ngIf="dc && dc.displayClass[dc.status].displayType == 'select'" tabindex="1"
+    [(ngModel)]="dc.value" [ngStyle]="dc.style" (blur)="dc.onBlur($event)"
+    (mouseover)="dc.onMouseOver($event)" (change)="dc.onChange($event)">
+    <option *ngFor="let option of dc.select.optionList" [attr.key]="option.value" [attr.value]="option.text">
+        {{option.text}}</option>
+</select>
