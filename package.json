@@ -1,0 +1,79 @@
+{
+  "_from": "ng-drag-table@^0.1.16",
+  "_inBundle": false,
+  "_integrity": "sha512-GqExjofmck83vFBEFcNyRaLe2rvsvyGt9rtUgrpblbxuHIW6tDTY83boOYiDjWXk0ro73BiNjk+OXsS/9Oh4Gg==",
+  "_location": "/ng-drag-table",
+  "_phantomChildren": {
+    "vue": "2.6.7",
+    "vue-class-component": "6.3.2",
+    "vue-property-decorator": "7.3.0",
+    "vue-router": "3.0.2"
+  },
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "ng-drag-table@^0.1.13",
+    "name": "ng-drag-table",
+    "escapedName": "ng-drag-table",
+    "rawSpec": "^0.1.13",
+    "saveSpec": null,
+    "fetchSpec": "^0.1.13"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-drag-table/-/ng-drag-table-0.1.14.tgz",
+  "_shasum": "df517764e37b80c7060d646da9eefc0d74e0ff4d",
+  "_spec": "ng-drag-table@^0.1.13",
+  "_where": "E:\\projects\\301\\综合信息服务平台\\code\\301fwsj\\trunk\\301fwsj_0.1",
+  "bundleDependencies": false,
+  "dependencies": {
+    "tslib": "^1.9.0",
+    "vue3-drag-table": "^0.2.17",
+    "zone.js": "~0.8.26"
+  },
+  "deprecated": false,
+  "description": "- new   - 增加dragOver,dragLeave事件回调处理，当返回'cancel'时，取消默认dragover,dragLeave事件；",
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.8.0",
+    "@angular-devkit/core": "^7.3.3",
+    "@angular/cli": "~6.2.5",
+    "@angular/compiler-cli": "^6.1.0",
+    "@angular/language-service": "^6.1.0",
+    "@types/jasmine": "~2.8.8",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "codelyzer": "~4.3.0",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~3.0.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~1.1.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-packagr": "^4.7.1",
+    "protractor": "~5.4.0",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.11.0",
+    "typescript": "~2.9.2"
+  },
+  "es2015": "fesm2015/ng-drag-table.js",
+  "esm2015": "esm2015/ng-drag-table.js",
+  "esm5": "esm5/ng-drag-table.js",
+  "fesm2015": "fesm2015/ng-drag-table.js",
+  "fesm5": "fesm5/ng-drag-table.js",
+  "main": "bundles/ng-drag-table.umd.js",
+  "metadata": "ng-drag-table.metadata.json",
+  "module": "fesm5/ng-drag-table.js",
+  "name": "ng-drag-table",
+  "private": false,
+  "sideEffects": false,
+  "typings": "ng-drag-table.d.ts",
+  "version": "0.1.17",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
