@@ -1,2 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import "../node_modules/vue3-drag-table/lib/drag-table.css"; */
+.my-table th,
+td {
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+.my-table tr:first-child td>div,
+.my-table tr:first-child drag-td>div,
+.my-table tr:first-child drag-th>div,
+.my-table tr:first-child th>div {
+    border-top: 0.1px ridge #dedede;
+}
+
+.my-table .table-top-left ,.my-table .thead-top-left{
+    border: 0.1px ridge #dedede !important;
+    border-width: 0 1px 1px 0 !important;
+}
+
+.my-table drag-th>div {
+    border: 0.1px ridge #dedede;
+    border-width: 0 1px 1px 0;
+}
+
+.my-table drag-td>div {
+    border: 0.1px ridge #dedede;
+    border-width: 0 1px 1px 0;
+}

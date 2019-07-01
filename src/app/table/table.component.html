@@ -31,12 +31,12 @@
       <tr *ngFor="let th of myTable.$rowNumber; let i = index">
         <ng-template [ngIf]="i < myTable.$tableHeadTop.length" [ngIfElse]="tbody">
           <!-- rowIndexTh -->
-          <th *ngIf="myTable.isShowRowIndex" (dragover)="th.dragOver($event)" (drop)="th.drop($event)"
-            (dragenter)="th.dragEnter($event)" (dragleave)="th.dragLeave($event)" (mousedown)="th.onMouseDown($event)"
-            (mousemove)="th.onMouseMove($event)" (mouseout)="th.onMouseOut($event)" class="rowNumber">
-            <div [ngStyle]="th.cell.style">
+          <th *ngIf="myTable.isShowRowIndex" class="rowNumber">
+            <drag-th [th]="th"> </drag-th>
+            <!-- <div [ngStyle]="th.cell.style">
               {{ myTable.hasLeftFixedTable ?'':th.cell.content}}
-            </div>
+            </div> -->
+
           </th>
           <!-- TopLeft  -->
           <th class="colNumber" tabindex="1" *ngIf="i===0 && myTable.$tableHeadLeft[0] && myTable.$tableHeadTop[0]"

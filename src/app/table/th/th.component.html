@@ -1,4 +1,4 @@
-<div tabindex="1" [ngStyle]="th.style" (click)="th.onClick($event)" (blur)="th.onBlur($event)"
+<div class="drag-th" tabindex="1" [ngStyle]="th.style" (click)="th.onClick($event)" (blur)="th.onBlur($event)"
     [attr.draggable]="th.draggable" (dragstart)="th.dragStart($event)" (dragover)="th.dragOver($event)"
     (drop)="th.drop($event)" (dragleave)="th.dragLeave($event)" (dragenter)="th.dragEnter($event)"
     (dragend)="th.dragEnd($event)" (mousedown)="th.onMouseDown($event)" (mousemove)="th.onMouseMove($event)"

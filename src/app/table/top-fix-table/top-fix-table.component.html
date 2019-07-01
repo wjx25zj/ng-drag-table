@@ -19,19 +19,16 @@
           (mousedown)="th.onMouseDown($event)" (mouseout)="th.onMouseOut($event)" (mousemove)="th.onMouseMove($event)"
           (click)="th.onClick($event)" (dragover)="th.dragOver($event)" (drop)="th.drop($event)"
           (dragenter)="th.dragEnter($event)" (dragleave)="th.dragLeave($event)">
-          <div [ngStyle]="th.cell.style">{{th.cell.content}}</div>
+          <!-- <div [ngStyle]="th.cell.style">{{th.cell.content}}</div> -->
+          <drag-th [th]="th"> </drag-th>
         </th>
       </tr>
       <!-- TopThead -->
       <tr *ngFor="let tr of myTable.$tableHeadTop; let i = index">
         <!-- rowIndexTh -->
-        <th *ngIf="myTable.isShowRowIndex" tabindex="1" class="rowNumber" [ngStyle]="myTable.$rowNumber[i].style"
-          (mousedown)="myTable.$rowNumber[i].onMouseDown($event)"
-          (mousemove)="myTable.$rowNumber[i].onMouseMove($event)" (mouseout)="myTable.$rowNumber[i].onMouseOut($event)"
-          (drop)="myTable.$rowNumber[i].drop($event)" (dragenter)="myTable.$rowNumber[i].dragEnter($event)"
-          (dragleave)="myTable.$rowNumber[i].dragLeave($event)" (dragover)="myTable.$rowNumber[i].dragOver($event)">
-
-          <div [ngStyle]="myTable.$rowNumber[i].cell.style">{{myTable.$rowNumber[i].cell.content}}</div>
+        <th *ngIf="myTable.isShowRowIndex" tabindex="1" class="rowNumber" 
+         >
+          <drag-th [th]="myTable.$rowNumber[i]"> </drag-th>
         </th>
         <th class="colNumber" tabindex="1" *ngIf="i===0 && myTable.$tableHeadLeft[0] && myTable.$tableHeadTop[0]"
           [attr.colspan]="myTable.theadLeftEntity.side2" [attr.rowspan]="myTable.$tableHeadTop.length"

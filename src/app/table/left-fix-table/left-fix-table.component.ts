@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-left-fix-table',
   templateUrl: './left-fix-table.component.html',
-  styleUrls: ['../../../../node_modules/vue3-drag-table/lib/drag-table.css']
+  styleUrls: ['../../../../node_modules/vue3-drag-table/lib/drag-table.css', './left-fix-table.component.css']
 })
 export class LeftFixTableComponent implements OnInit {
   @Input() myTable: any;

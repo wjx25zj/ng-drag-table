@@ -1,0 +1,11 @@
+.my-table th,
+td {
+    padding: 0 !important;
+    border: 0 !important;
+}
+.my-table tr:first-child td>div,
+.my-table tr:first-child drag-td>div,
+.my-table tr:first-child drag-th>div,
+.my-table tr:first-child th>div {
+    border-top: 0.1px ridge #dedede;
+}

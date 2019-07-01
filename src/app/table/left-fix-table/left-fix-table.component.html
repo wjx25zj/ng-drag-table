@@ -24,11 +24,8 @@
       <!-- 第二行开始 -->
       <tr *ngFor="let th of myTable.$rowNumber; let i = index">
         <!-- rowIndexThead -->
-        <th *ngIf="myTable.isShowRowIndex" class="rowNumber" [ngStyle]="th.style" tabindex="1"
-          (mousedown)="th.onMouseDown($event)" (mouseout)="th.onMouseOut($event)" (mousemove)="th.onMouseMove($event)"
-          (click)="th.onClick($event)" (dragover)="th.dragOver($event)" (drop)="th.drop($event)"
-          (dragenter)="th.dragEnter($event)" (dragleave)="th.dragLeave($event)">
-          <div [ngStyle]="th.cell.style" [attr.title]=th.cell.content>{{th.cell.content}}</div>
+        <th *ngIf="myTable.isShowRowIndex" class="rowNumber" tabindex="1">
+          <drag-th [th]="th"> </drag-th>
         </th>
         <!-- 内部TopLeft 判断-->
         <th *ngIf="i===0 && myTable.$tableHeadLeft[0]&&myTable.$tableHeadTop[0]" class="colNumber" tabindex="1"
@@ -40,40 +37,8 @@
 
         <!-- 主表里左侧表头 -->
         <th tabindex="1" *ngFor="let th of myTable.$tableHeadLeft[i - myTable.theadTopEntity.side2]; let j = index"
-          [ngStyle]="th.style" (click)="th.onClick($event)" (blur)="th.onBlur($event)" [attr.draggable]="th.draggable"
-          (dragstart)="th.dragStart($event)" (dragover)="th.dragOver($event)" (drop)="th.drop($event)"
-          (dragleave)="th.dragLeave($event)" (dragenter)="th.dragEnter($event)" (dragend)="th.dragEnd($event)"
-          (mousedown)="th.onMouseDown($event)" (mousemove)="th.onMouseMove($event)" (mouseout)="th.onMouseOut($event)"
           [attr.colspan]="th.span2" [attr.rowspan]="th.span1">
-          <svg *ngIf="th.treeContainer && th.treeContainer.show" [ngStyle]="th.treeContainer.style" viewBox="0 0 1024 1024"
-            (click)="th.treeContainer.onClick($event)">
-            <path *ngFor="let d of th.treeContainer.svg[th.treeContainer.$openStatus].paths" [attr.d]="d"></path>
-          </svg>
-          <ng-container *ngFor="let sc of th.selfContainers">
-            <svg [ngStyle]="sc.style" viewBox="0 0 1024 1024" *ngIf="sc.show" (click)="sc.onClick($event)">
-              <path *ngFor="let d of sc.svg[sc.type].paths" [attr.d]="d"></path>
-            </svg>
-          </ng-container>
-          <div *ngIf="th.cell.displayClass[th.cell.status].displayType == 'text'" [ngStyle]="th.cell.style"
-            (dblclick)="th.cell.onDbClick()" [attr.title]="th.cell.title">
-
-            {{th.cell.content}}
-          </div>
-
-          <input *ngIf="th.cell.displayClass[th.cell.status].displayType == 'input'"
-            (mouseover)="th.cell.onMouseOver($event)" (blur)="th.cell.inputOnBlur($event,true)"
-            [(ngModel)]="th.cell.value" [ngStyle]="th.cell.style" style="background-color:#fff;" />
-
-          <button (click)="th.cell.onClick($event)" *ngIf="th.cell.displayClass[th.cell.status].displayType == 'button'"
-            [ngStyle]="th.cell.style">{{th.cell.content}}</button>
-
-          <select tabindex="1" *ngIf="th.cell.displayClass[th.cell.status].displayType == 'select'"
-            [(ngModel)]="th.cell.value" [ngStyle]="th.cell.style" (change)="th.cell.onChange($event)"
-            (blur)="th.cell.onBlur($event)">
-            <option *ngFor="let option of th.cell.select.optionList" [attr.value]="option.text"
-              [attr.key]="option.value">{{option.text}}</option>
-          </select>
-
+          <drag-th [th]="th"> </drag-th>
         </th>
       </tr>
     </thead>

@@ -1,4 +1,4 @@
-<div [ngStyle]="td.style" (click)="td.onClick($event)" (mousedown)="td.onMouseDown($event)" (blur)="td.onBlur($event)"
+<div  class="drag-td" [ngStyle]="td.style" (click)="td.onClick($event)" (mousedown)="td.onMouseDown($event)" (blur)="td.onBlur($event)"
     (paste)="td.onPaste($event)">
     <drag-dc [dc]="td.cell"></drag-dc>
 </div>
