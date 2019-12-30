@@ -1,3 +1,7 @@
+##  0.1.18 :2019.5.31
+- new
+  - 对已展开的树形容器（treeContainer）进行删除，会连同#treeParent中children里的container一同删除。
+  
 ##  0.1.17 :2019.5.23
 - new
   - BaseTable中getTheadLeavesList1方法加入第二入参 needResize,该值为false时不调用BaseThead的resize方法，即获取上一次渲染后的状态。

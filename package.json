@@ -1,5 +1,5 @@
 {
-  "_from": "ng-drag-table@^0.1.16",
+  "_from": "ng-drag-table@^0.1.17",
   "_inBundle": false,
   "_integrity": "sha512-GqExjofmck83vFBEFcNyRaLe2rvsvyGt9rtUgrpblbxuHIW6tDTY83boOYiDjWXk0ro73BiNjk+OXsS/9Oh4Gg==",
   "_location": "/ng-drag-table",
@@ -30,7 +30,7 @@
   "bundleDependencies": false,
   "dependencies": {
     "tslib": "^1.9.0",
-    "vue3-drag-table": "^0.2.17",
+    "vue3-drag-table": "^0.2.18",
     "zone.js": "~0.8.26"
   },
   "deprecated": false,
@@ -70,7 +70,7 @@
   "private": false,
   "sideEffects": false,
   "typings": "ng-drag-table.d.ts",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
