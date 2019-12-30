@@ -1,3 +1,6 @@
+##文档  
+- 暂时参考vue-drag-table文档地址: http://39.97.251.151:18080/home
+
 ##  0.1.18 :2019.5.31
 - new
   - 对已展开的树形容器（treeContainer）进行删除，会连同#treeParent中children里的container一同删除。
